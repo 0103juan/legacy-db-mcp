@@ -1,5 +1,7 @@
 # legacy-db-mcp
 
+[![CI](https://github.com/0103juan/legacy-db-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/0103juan/legacy-db-mcp/actions/workflows/ci.yml)
+
 A custom [Model Context Protocol](https://modelcontextprotocol.io) server that lets an LLM query a legacy ERP database in plain language, without being able to change it, read its sensitive columns, or stall it.
 
 The interesting part is not that the model can write SQL. It is that the database engine, not a prompt and not a regex, decides what that SQL is allowed to touch.
