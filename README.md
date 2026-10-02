@@ -98,3 +98,7 @@ seed.py         builds the demo database (deterministic)
 chat.py         Claude as MCP host, using the Anthropic SDK tool runner
 test_server.py  the security and protocol tests
 ```
+
+## License
+
+[MIT](LICENSE).
