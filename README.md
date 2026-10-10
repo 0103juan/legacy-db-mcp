@@ -65,6 +65,8 @@ Or use the included host, which connects Claude to the server over stdio (needs 
 uv run python chat.py "Which sales rep shipped the most revenue in Q3 2024?"
 ```
 
+The host calls the model through [model-gateway](https://github.com/0103juan/model-gateway): every turn of the tool runner is recorded in `.gateway/ledger.jsonl`, and the cost printed at the end is the sum of those records. That path has run against a fake model only; the three sessions below predate it.
+
 ## What the tests prove
 
 `test_server.py` attacks the server the way a confused or manipulated model would: nine kinds of non-`SELECT` statements, five ways of reaching a masked column, a recursive query that never ends, an injection through the table name, and a full round trip over the MCP protocol with an in-process client.
@@ -95,7 +97,7 @@ In these sessions the model never tried a forbidden statement, so the engine-lev
 ```
 server.py       the MCP server: three tools, one resource, the authorizer, the audit log
 seed.py         builds the demo database (deterministic)
-chat.py         Claude as MCP host, using the Anthropic SDK tool runner
+chat.py         Claude as MCP host: the Anthropic SDK tool runner, called through model-gateway
 test_server.py  the security and protocol tests
 ```
 
